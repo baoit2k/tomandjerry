@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div.tomandjerry {
+            width: 1000px;
+            margin: 30px auto;
+        }
+        
+        div.tomandjerry div.images {
+            display: flex;
+            position: relative;
+        }
+        
+        div.jerry {
+            position: absolute;
+            left: 0;
+            transition: all 0.6s;
+            transform: translate(400);
+            cursor: pointer;
+        }
+        
+        div.phomai {
+            position: absolute;
+            right: 0;
+            transition: all 0.6s;
+            cursor: pointer;
+            transition-delay: 1s;
+        }
+        
+        div.tom {
+            position: absolute;
+            left: 1000px;
+            transition: all 0.6s;
+            cursor: pointer;
+            transition-delay: 1s;
+            top: 10px;
+        }
+        
+        img {
+            width: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tomandjerry">
+        <div class="images">
+            <div class="jerry" id="jerry">
+                <img src="./images/jerry.png" alt="không thể hiển thị">
+            </div>
+            <div class="phomai">
+                <img src="./images/phomai.png" alt="" id="phomai">
+            </div>
+            <div class="tom">
+                <img src="./images/tom1.png" alt="" id="tom" style="opacity: 0;" width="300px">
+            </div>
+        </div>
+        <div class="move" id="move" style="position: absolute; left: 0px; top: 200px; opacity: 0; transition: all 0.5s;">
+            <img src="./images/tomandjr.png" alt="">
+        </div>
+    </div>
+    <script>
+        var jerry = document.getElementById('jerry')
+        var phomai = document.getElementById('phomai')
+        var tom = document.getElementById('tom')
+        var move = document.getElementById('move')
+        jerry.onclick = () => {
+            jerry.style.left = "780px"
+            jerry.style.opacity = "0"
+            setTimeout(function() {
+                phomai.src = "./images/jerryandphomai.png"
+                tom.style.opacity = "1"
+            }, 500)
+            tom.style.opacity = "0"
+            startMove();
+        }
+        const move1 = () => {
+            var x = Math.random() * 700
+            var y = Math.random() * 700
+            var left = x + 'px'
+            var top = y + 'px'
+            move.style.opacity = "1"
+            move.style.left = left
+            move.style.top = top
+        }
+        const startMove = () => {
+            setInterval(function() {
+                move1()
+            }, 1000);
+        }
+    </script>
+</body>
+
+</html
